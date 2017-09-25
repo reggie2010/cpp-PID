@@ -1,3 +1,8 @@
+/*
+* @aurthor: Vontrelle Collins
+* @file: app/pid.cpp
+*/
+
 #include <iostream>
 #include "pid.hpp"
 

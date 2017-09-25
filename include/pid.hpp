@@ -1,3 +1,8 @@
+/*
+* @aurthor: Vontrelle Collins
+* @file: include/pid.hpp
+*/
+
 #ifndef PID_H
 #define PID_H
 

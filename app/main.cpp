@@ -6,9 +6,12 @@
 #include <iostream>
 #include "pid.hpp"
 
-int main()
-{
+int main() {
 
-	ControllerPID controller;
+    ControllerPID controller;
+    controller.setKI(0.5);
+    controller.setKI(0.25);
+    controller.setKD(0.1);
+
     return 0;
 }

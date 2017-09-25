@@ -5,7 +5,7 @@ Implements a PID Controller
 
 ## Standard install via command-line
 ```
-git clone --recursive https://github.com/dpiet/cpp-boilerplate
+git clone --recursive https://github.com/reggie2010/cpp-PID.git
 cd <path to repository>
 mkdir build
 cd build

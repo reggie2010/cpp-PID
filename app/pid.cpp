@@ -39,29 +39,22 @@ double ControllerPID::outputPID(double refSig, double feedbackSig, double timeDe
 	* timeDelta is the change in time used in calculating integral.
 	*/
 
-	double error {refSig - feedbackSig};
-//
-    double totalError =0;
-    double previousError = 0;
-    double newVelocity = 0;
-    double kp = getKP();
-    double ki = getKI();
-    double kd = getKD();
-    //std::cout << kp <<" "<< ki<<" "<<kd<<"\t";
-    while ( std::abs(error) > 0.01 ) {
-    error = refSig - feedbackSig;
-    //std::cout << "error: "<< error <<std::endl;
-    totalError += error;
-    //std::cout << kp * error << " "<< ki * totalError *timeDelta << " "<< ((error - previousError)/timeDelta) * kd << std::endl;
-    double newVel = kp * error + ki * totalError *timeDelta + ((error - previousError)/timeDelta) * kd;
-    previousError = error;
-    newVelocity = (newVel > 10) ? 10 : newVel < -10 ? -10 : newVel;
-    
-//newVelocity = newVel;    
-feedbackSig = newVelocity;
-    //std::this_thread::sleep_for (std::chrono::seconds(1));
-}
-//      
-        std::cout<<error<<" "<<newVelocity<<std::endl;
-	return newVelocity;
+	double error {refSig - feedbackSig}; 
+        double totalError = 0;
+        double previousError = 0;
+        double newVelocity = 0;
+        double kp = getKP();
+        double ki = getKI();
+        double kd = getKD();
+        while ( std::abs(error) > 0.01 ) {
+            error = refSig - feedbackSig;
+            totalError += error;
+            double newVel = kp * error + ki * totalError *timeDelta + ((error - previousError)/timeDelta) * kd;
+            previousError = error;
+            newVelocity = (newVel > 10) ? 10 : newVel < -10 ? -10 : newVel;
+            feedbackSig = newVelocity;
+            // std::this_thread::sleep_for (std::chrono::seconds(1));
+        }
+        std::cout << error << " " << newVelocity << std::endl;
+        return newVelocity;
 }

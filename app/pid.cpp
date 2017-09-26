@@ -32,6 +32,8 @@ void ControllerPID::setKD(double kd) { mkd=kd; }
 double ControllerPID::outputPID(double refSig, double feedbackSig, double timeDelta) {
 	/*
 	* Computs the controlled PID output
+	* Calculates new velocity using reference and feedback signals.
+	* timeDelta is the change in time used in calculating integral.
 	*/
 
 	double error {refSig - feedbackSig};
